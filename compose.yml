@@ -11,7 +11,7 @@ services:
       options:
         max-size: "200k"
         max-file: "10"
-  db:
+  mysql:
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
