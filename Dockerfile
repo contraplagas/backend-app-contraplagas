@@ -6,7 +6,10 @@ RUN install-php-extensions \
     pdo_sqlite \
     pdo_mysql \
     redis \
-    && apk add --no-cache supervisor
+    && apk add supervisor
+
+#Instalar supervisor
+RUN apt-get update && apt-get install -y supervisor
 
 
 
