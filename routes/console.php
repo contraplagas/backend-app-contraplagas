@@ -10,7 +10,7 @@ Artisan::command('inspire', function () {
 
 
 Schedule::command('conversations:remarketing')
-    ->cron('0 5 */2 * *') // Cada dos días a las 5:00 AM
+    ->cron('0 5 * * 1,3,5,7') // Lunes, Miércoles, Viernes, Domingo a las 5:00 AM
     ->timezone('America/Bogota')
     ->withoutOverlapping()
     ->appendOutputTo(storage_path('logs/conversations_remarketing.log'));
