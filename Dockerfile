@@ -17,7 +17,7 @@ COPY . /app
 WORKDIR /app
 
 # Copia el archivo de configuración de supervisord
-COPY supervisord.conf /etc/supervisord.conf
+COPY ./docker/supervisor/supervisor.conf /etc/supervisord.conf
 
 EXPOSE 8000
 
