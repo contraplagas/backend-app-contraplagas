@@ -8,8 +8,7 @@ RUN install-php-extensions \
     redis \
     && apk add supervisor
 
-#Instalar supervisor
-RUN apt-get update && apt-get install -y supervisor
+
 
 
 
