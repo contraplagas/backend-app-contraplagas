@@ -5,7 +5,8 @@ RUN install-php-extensions \
     sqlite3 \
     pdo_sqlite \
     pdo_mysql \
-    redis 
+    redis \
+    && apk add --no-cache supervisor
 
 
 
@@ -13,4 +14,9 @@ WORKDIR /app
 
 COPY . /app
 
-ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
+# Copia el archivo de configuración de supervisord
+COPY docker/supervisor/supervisord.conf /etc/supervisord.conf
+
+EXPOSE 8000
+
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
