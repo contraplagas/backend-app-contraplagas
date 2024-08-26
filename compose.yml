@@ -5,10 +5,25 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    restart:
-      always
+    restart: always
     logging:
       driver: "json-file"
       options:
         max-size: "200k"
         max-file: "10"
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: backend_laravel_api
+      MYSQL_USER: sail
+      MYSQL_PASSWORD: password
+    ports:
+      - "3309:3306"
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+
