@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('conversation_id');
             $table->string('sender');
-            $table->text('message');
+            $table->jsonb('message');
             $table->timestamp('last_message_sent')->nullable();
             $table->unsignedInteger('remarketing_cycle')->default(1); // Ciclo de remarketing
 

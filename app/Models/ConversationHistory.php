@@ -12,6 +12,12 @@ class ConversationHistory extends Model
         'sender',
         'message',
         'last_message_sent',
+        'remarketing_cycle',
+    ];
+
+    protected $casts = [
+        'last_message_sent' => 'datetime',
+        'message' => 'array',
     ];
 
 
