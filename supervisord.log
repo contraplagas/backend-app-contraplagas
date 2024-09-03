@@ -1,0 +1,1358 @@
+2024-09-03 21:05:48,767 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-09-03 21:05:48,769 INFO supervisord started with pid 1
+2024-09-03 21:05:49,778 INFO spawned: 'queue' with pid 7
+2024-09-03 21:05:49,779 INFO spawned: 'scheduler' with pid 8
+2024-09-03 21:05:49,781 INFO spawned: 'web' with pid 9
+2024-09-03 21:05:50,058 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:05:50,058 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:50,058 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:50,060 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+
+2024-09-03 21:05:50,060 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:50,060 DEBG 'scheduler' stdout output:
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:50,066 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140103118388560 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:05:50,066 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140103118059536 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:05:50,066 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140103132531728 for <Subprocess at 140103120086864 with name queue in state STARTING> (stdout)>
+2024-09-03 21:05:50,066 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140103118883728 for <Subprocess at 140103120086864 with name queue in state STARTING> (stderr)>
+2024-09-03 21:05:50,066 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:05:50,066 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:05:50,066 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:50,195 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+
+2024-09-03 21:05:50,195 DEBG 'web' stdout output:
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:05:50,205 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:05:50,205 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:05:50,208 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+
+2024-09-03 21:05:50,208 DEBG 'web' stdout output:
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:50,213 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140103134853904 for <Subprocess at 140103118257552 with name web in state STARTING> (stdout)>
+2024-09-03 21:05:50,213 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140103118231248 for <Subprocess at 140103118257552 with name web in state STARTING> (stderr)>
+2024-09-03 21:05:50,213 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:05:50,214 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:51,216 INFO spawned: 'queue' with pid 44
+2024-09-03 21:05:51,217 INFO spawned: 'scheduler' with pid 45
+2024-09-03 21:05:51,218 INFO spawned: 'web' with pid 46
+2024-09-03 21:05:51,318 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+
+2024-09-03 21:05:51,318 DEBG 'scheduler' stdout output:
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:51,319 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:05:51,319 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:51,320 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:05:51,320 DEBG 'scheduler' stdout output:
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:51,322 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:05:51,322 DEBG 'queue' stdout output:
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:51,323 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140103132531728 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:05:51,323 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140103118059472 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:05:51,323 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:05:51,323 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:51,325 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140103118252752 for <Subprocess at 140103120086864 with name queue in state STARTING> (stdout)>
+2024-09-03 21:05:51,325 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140103118060624 for <Subprocess at 140103120086864 with name queue in state STARTING> (stderr)>
+2024-09-03 21:05:51,373 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+
+2024-09-03 21:05:51,373 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:05:51,373 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:51,373 DEBG 'web' stdout output:
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:05:51,383 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:05:51,383 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:05:51,387 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+
+2024-09-03 21:05:51,387 DEBG 'web' stdout output:
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:51,391 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140103118388560 for <Subprocess at 140103118257552 with name web in state STARTING> (stdout)>
+2024-09-03 21:05:51,391 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140103119542736 for <Subprocess at 140103118257552 with name web in state STARTING> (stderr)>
+2024-09-03 21:05:51,392 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:05:51,392 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:53,395 INFO spawned: 'queue' with pid 81
+2024-09-03 21:05:53,397 INFO spawned: 'scheduler' with pid 82
+2024-09-03 21:05:53,410 INFO spawned: 'web' with pid 83
+2024-09-03 21:05:53,498 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:05:53,498 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:53,501 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:05:53,501 DEBG 'queue' stdout output:
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:53,505 DEBG 'scheduler' stdout output:
+
+
+2024-09-03 21:05:53,505 DEBG 'scheduler' stdout output:
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:53,506 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140103118882768 for <Subprocess at 140103120086864 with name queue in state STARTING> (stdout)>
+2024-09-03 21:05:53,506 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140103118231248 for <Subprocess at 140103120086864 with name queue in state STARTING> (stderr)>
+2024-09-03 21:05:53,506 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:05:53,506 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:53,508 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:53,512 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140103132539152 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:05:53,512 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140103118059344 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:05:53,512 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:05:53,512 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:53,561 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8000 
+
+2024-09-03 21:05:53,562 DEBG 'web' stdout output:
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:05:53,573 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:05:53,573 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:05:53,577 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:53,582 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140103118061520 for <Subprocess at 140103118257552 with name web in state STARTING> (stdout)>
+2024-09-03 21:05:53,583 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140103118028944 for <Subprocess at 140103118257552 with name web in state STARTING> (stderr)>
+2024-09-03 21:05:53,583 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:05:53,583 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:56,587 INFO spawned: 'queue' with pid 118
+2024-09-03 21:05:56,589 INFO spawned: 'scheduler' with pid 119
+2024-09-03 21:05:56,590 INFO spawned: 'web' with pid 120
+2024-09-03 21:05:56,688 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:56,692 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:05:56,692 DEBG 'scheduler' stdout output:
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:56,693 DEBG 'queue' stdout output:
+
+
+2024-09-03 21:05:56,693 DEBG 'queue' stdout output:
+   Illuminate\Database\QueryException 
+
+2024-09-03 21:05:56,693 DEBG 'queue' stdout output:
+
+
+2024-09-03 21:05:56,693 DEBG 'queue' stdout output:
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:05:56,694 DEBG 'queue' stdout output:
+
+
+2024-09-03 21:05:56,694 DEBG 'queue' stdout output:
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:05:56,697 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140103131956176 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:05:56,697 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140103118061392 for <Subprocess at 140103120089168 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:05:56,697 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:05:56,697 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:56,698 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:56,698 INFO gave up: scheduler entered FATAL state, too many start retries too quickly
+2024-09-03 21:05:56,700 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140103118227344 for <Subprocess at 140103120086864 with name queue in state STARTING> (stdout)>
+2024-09-03 21:05:56,700 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140103118339408 for <Subprocess at 140103120086864 with name queue in state STARTING> (stderr)>
+2024-09-03 21:05:56,700 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:05:56,700 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:56,732 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8000 
+
+2024-09-03 21:05:56,732 INFO gave up: queue entered FATAL state, too many start retries too quickly
+2024-09-03 21:05:56,732 DEBG 'web' stdout output:
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:05:56,744 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:05:56,744 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:05:56,747 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:05:56,751 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140103118882768 for <Subprocess at 140103118257552 with name web in state STARTING> (stdout)>
+2024-09-03 21:05:56,751 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140103116047440 for <Subprocess at 140103118257552 with name web in state STARTING> (stderr)>
+2024-09-03 21:05:56,751 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:05:56,751 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:05:57,752 INFO gave up: web entered FATAL state, too many start retries too quickly
+2024-09-03 21:06:41,804 WARN received SIGTERM indicating exit request
+2024-09-03 21:09:54,153 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-09-03 21:09:54,154 INFO supervisord started with pid 1
+2024-09-03 21:09:55,157 INFO spawned: 'queue' with pid 7
+2024-09-03 21:09:55,158 INFO spawned: 'scheduler' with pid 8
+2024-09-03 21:09:55,159 INFO spawned: 'web' with pid 9
+2024-09-03 21:09:55,261 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+
+2024-09-03 21:09:55,261 DEBG 'scheduler' stdout output:
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:09:55,263 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:09:55,263 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:09:55,263 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:09:55,263 DEBG 'scheduler' stdout output:
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:55,267 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140609776171536 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:09:55,267 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140609773764240 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:09:55,267 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:09:55,267 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:09:55,267 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:55,270 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140609776668496 for <Subprocess at 140609775828816 with name queue in state STARTING> (stdout)>
+2024-09-03 21:09:55,270 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140609776038800 for <Subprocess at 140609775828816 with name queue in state STARTING> (stderr)>
+2024-09-03 21:09:55,271 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:09:55,271 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:09:55,307 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+
+2024-09-03 21:09:55,307 DEBG 'web' stdout output:
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:09:55,316 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:09:55,316 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:09:55,321 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:55,326 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140609773830928 for <Subprocess at 140609776109456 with name web in state STARTING> (stderr)>
+2024-09-03 21:09:55,326 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140609776122896 for <Subprocess at 140609776109456 with name web in state STARTING> (stdout)>
+2024-09-03 21:09:55,326 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:09:55,326 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:09:56,329 INFO spawned: 'queue' with pid 44
+2024-09-03 21:09:56,330 INFO spawned: 'scheduler' with pid 45
+2024-09-03 21:09:56,331 INFO spawned: 'web' with pid 46
+2024-09-03 21:09:56,430 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+2024-09-03 21:09:56,430 DEBG 'scheduler' stdout output:
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+2024-09-03 21:09:56,430 DEBG 'scheduler' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:09:56,432 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:56,434 DEBG 'queue' stdout output:
+
+
+2024-09-03 21:09:56,434 DEBG 'queue' stdout output:
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+
+2024-09-03 21:09:56,434 DEBG 'queue' stdout output:
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:09:56,437 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+
+2024-09-03 21:09:56,438 DEBG 'queue' stdout output:
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:56,438 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140609775822480 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:09:56,439 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140609776032528 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:09:56,439 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:09:56,439 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:09:56,440 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140609775828560 for <Subprocess at 140609775828816 with name queue in state STARTING> (stdout)>
+2024-09-03 21:09:56,441 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140609773764112 for <Subprocess at 140609775828816 with name queue in state STARTING> (stderr)>
+2024-09-03 21:09:56,441 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:09:56,441 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:09:56,473 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:09:56,482 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:09:56,482 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:09:56,487 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+
+2024-09-03 21:09:56,487 DEBG 'web' stdout output:
+      [2m+18 vendor frames [22m
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:56,492 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140609773748496 for <Subprocess at 140609776109456 with name web in state STARTING> (stdout)>
+2024-09-03 21:09:56,492 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140609776081744 for <Subprocess at 140609776109456 with name web in state STARTING> (stderr)>
+2024-09-03 21:09:56,492 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:09:56,492 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:09:58,495 INFO spawned: 'queue' with pid 80
+2024-09-03 21:09:58,496 INFO spawned: 'scheduler' with pid 81
+2024-09-03 21:09:58,497 INFO spawned: 'web' with pid 82
+2024-09-03 21:09:58,597 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+2024-09-03 21:09:58,597 DEBG 'scheduler' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:09:58,598 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:09:58,598 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:09:58,600 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:09:58,600 DEBG 'scheduler' stdout output:
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:58,600 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:09:58,600 DEBG 'queue' stdout output:
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:58,604 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140609776075920 for <Subprocess at 140609775828816 with name queue in state STARTING> (stdout)>
+2024-09-03 21:09:58,604 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140609775817424 for <Subprocess at 140609775828816 with name queue in state STARTING> (stderr)>
+2024-09-03 21:09:58,604 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:09:58,604 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140609776116304 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:09:58,604 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140609773830672 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:09:58,604 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:09:58,604 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:09:58,637 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:09:58,647 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:09:58,647 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:09:58,651 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+
+2024-09-03 21:09:58,651 DEBG 'web' stdout output:
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:09:58,656 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140609773748496 for <Subprocess at 140609776109456 with name web in state STARTING> (stdout)>
+2024-09-03 21:09:58,656 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140609773831568 for <Subprocess at 140609776109456 with name web in state STARTING> (stderr)>
+2024-09-03 21:09:58,656 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:09:58,656 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:10:01,660 INFO spawned: 'queue' with pid 117
+2024-09-03 21:10:01,661 INFO spawned: 'scheduler' with pid 118
+2024-09-03 21:10:01,662 INFO spawned: 'web' with pid 119
+2024-09-03 21:10:01,780 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:10:01,780 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:10:01,780 DEBG 'scheduler' stdout output:
+
+
+2024-09-03 21:10:01,780 DEBG 'scheduler' stdout output:
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+2024-09-03 21:10:01,780 DEBG 'scheduler' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:10:01,782 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:10:01,783 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:10:01,783 DEBG 'queue' stdout output:
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:10:01,786 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140609775822480 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:10:01,786 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140609773830800 for <Subprocess at 140609776119888 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:10:01,786 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140609773748496 for <Subprocess at 140609775828816 with name queue in state STARTING> (stdout)>
+2024-09-03 21:10:01,786 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140609777870864 for <Subprocess at 140609775828816 with name queue in state STARTING> (stderr)>
+2024-09-03 21:10:01,786 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:10:01,786 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:10:01,786 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:10:01,787 INFO gave up: queue entered FATAL state, too many start retries too quickly
+2024-09-03 21:10:01,787 INFO gave up: scheduler entered FATAL state, too many start retries too quickly
+2024-09-03 21:10:01,822 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8000 
+
+
+2024-09-03 21:10:01,822 DEBG 'web' stdout output:
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:10:01,831 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:10:01,832 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:10:01,835 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+2024-09-03 21:10:01,836 DEBG 'web' stdout output:
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:10:01,840 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140609776038800 for <Subprocess at 140609776109456 with name web in state STARTING> (stdout)>
+2024-09-03 21:10:01,840 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140609773764304 for <Subprocess at 140609776109456 with name web in state STARTING> (stderr)>
+2024-09-03 21:10:01,840 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:10:01,840 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:10:02,841 INFO gave up: web entered FATAL state, too many start retries too quickly
+2024-09-03 21:19:44,586 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-09-03 21:19:44,587 INFO supervisord started with pid 1
+2024-09-03 21:19:45,590 INFO spawned: 'queue' with pid 7
+2024-09-03 21:19:45,591 INFO spawned: 'scheduler' with pid 8
+2024-09-03 21:19:45,592 INFO spawned: 'web' with pid 9
+2024-09-03 21:19:45,701 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+2024-09-03 21:19:45,701 DEBG 'scheduler' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:45,704 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+34 vendor frames [22m
+
+
+2024-09-03 21:19:45,704 DEBG 'scheduler' stdout output:
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:45,704 DEBG 'queue' stdout output:
+
+
+2024-09-03 21:19:45,704 DEBG 'queue' stdout output:
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:45,706 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140000053409424 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:19:45,706 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140000054103376 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:19:45,707 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:19:45,707 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:45,707 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:45,709 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140000054108496 for <Subprocess at 140000055306576 with name queue in state STARTING> (stdout)>
+2024-09-03 21:19:45,709 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140000053457360 for <Subprocess at 140000055306576 with name queue in state STARTING> (stderr)>
+2024-09-03 21:19:45,710 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:19:45,710 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:45,748 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+
+2024-09-03 21:19:45,748 DEBG 'web' stdout output:
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:19:45,757 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:19:45,757 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:19:45,762 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:45,767 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140000053450832 for <Subprocess at 140000053404752 with name web in state STARTING> (stdout)>
+2024-09-03 21:19:45,767 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140000053302416 for <Subprocess at 140000053404752 with name web in state STARTING> (stderr)>
+2024-09-03 21:19:45,767 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:19:45,767 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:46,769 INFO spawned: 'queue' with pid 46
+2024-09-03 21:19:46,770 INFO spawned: 'scheduler' with pid 47
+2024-09-03 21:19:46,771 INFO spawned: 'web' with pid 48
+2024-09-03 21:19:46,876 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:19:46,876 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:46,878 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+
+2024-09-03 21:19:46,878 DEBG 'queue' stdout output:
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:46,879 DEBG 'scheduler' stdout output:
+
+
+2024-09-03 21:19:46,879 DEBG 'scheduler' stdout output:
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+2024-09-03 21:19:46,879 DEBG 'scheduler' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:46,882 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140000053460368 for <Subprocess at 140000055306576 with name queue in state STARTING> (stdout)>
+2024-09-03 21:19:46,882 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140000054103376 for <Subprocess at 140000055306576 with name queue in state STARTING> (stderr)>
+2024-09-03 21:19:46,882 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:19:46,882 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:46,882 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:46,886 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140000053450832 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:19:46,886 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140000053301392 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:19:46,886 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:19:46,886 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:46,915 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:19:46,925 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:19:46,925 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:19:46,929 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+
+2024-09-03 21:19:46,929 DEBG 'web' stdout output:
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:46,934 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140000053598480 for <Subprocess at 140000053404752 with name web in state STARTING> (stdout)>
+2024-09-03 21:19:46,934 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140000053303632 for <Subprocess at 140000053404752 with name web in state STARTING> (stderr)>
+2024-09-03 21:19:46,934 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:19:46,934 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:48,937 INFO spawned: 'queue' with pid 83
+2024-09-03 21:19:48,939 INFO spawned: 'scheduler' with pid 84
+2024-09-03 21:19:48,941 INFO spawned: 'web' with pid 85
+2024-09-03 21:19:49,044 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+2024-09-03 21:19:49,044 DEBG 'scheduler' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:49,048 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+
+2024-09-03 21:19:49,049 DEBG 'scheduler' stdout output:
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:49,050 DEBG 'queue' stdout output:
+
+
+2024-09-03 21:19:49,050 DEBG 'queue' stdout output:
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:49,052 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140000053527888 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:19:49,052 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140000053301520 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:19:49,052 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:19:49,052 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:49,053 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:49,056 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140000053517520 for <Subprocess at 140000055306576 with name queue in state STARTING> (stdout)>
+2024-09-03 21:19:49,056 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140000053600336 for <Subprocess at 140000055306576 with name queue in state STARTING> (stderr)>
+2024-09-03 21:19:49,056 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:19:49,056 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:49,090 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+  Local: http://127.0.0.1:8000 
+
+
+2024-09-03 21:19:49,090 DEBG 'web' stdout output:
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:19:49,100 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:19:49,100 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:19:49,103 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+
+2024-09-03 21:19:49,103 DEBG 'web' stdout output:
+  19  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:49,109 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140000053450832 for <Subprocess at 140000053404752 with name web in state STARTING> (stdout)>
+2024-09-03 21:19:49,109 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140000053303952 for <Subprocess at 140000053404752 with name web in state STARTING> (stderr)>
+2024-09-03 21:19:49,109 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:19:49,109 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:52,114 INFO spawned: 'queue' with pid 120
+2024-09-03 21:19:52,115 INFO spawned: 'scheduler' with pid 121
+2024-09-03 21:19:52,116 INFO spawned: 'web' with pid 122
+2024-09-03 21:19:52,215 DEBG 'scheduler' stdout output:
+
+   Illuminate\Database\QueryException 
+
+
+2024-09-03 21:19:52,215 DEBG 'scheduler' stdout output:
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: delete from `cache` where `key` in (illuminate:schedule:interrupt))
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:52,218 DEBG 'scheduler' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+34 vendor frames [22m
+
+  35  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:52,220 DEBG 'queue' stdout output:
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000] [2002] Connection refused (Connection: mysql, SQL: select * from `cache` where `key` in (illuminate:queue:restart))
+
+2024-09-03 21:19:52,221 DEBG 'queue' stdout output:
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:825
+
+2024-09-03 21:19:52,223 DEBG fd 9 closed, stopped monitoring <POutputDispatcher at 140000053600336 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stdout)>
+2024-09-03 21:19:52,223 DEBG fd 13 closed, stopped monitoring <POutputDispatcher at 140000053303568 for <Subprocess at 140000054107856 with name scheduler in state STARTING> (stderr)>
+2024-09-03 21:19:52,223 WARN exited: scheduler (exit status 1; not expected)
+2024-09-03 21:19:52,223 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:52,224 DEBG 'queue' stdout output:
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+      [2m+40 vendor frames [22m
+
+  41  artisan:13
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:52,224 INFO gave up: scheduler entered FATAL state, too many start retries too quickly
+2024-09-03 21:19:52,227 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140000053607312 for <Subprocess at 140000055306576 with name queue in state STARTING> (stdout)>
+2024-09-03 21:19:52,227 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140000053221904 for <Subprocess at 140000055306576 with name queue in state STARTING> (stderr)>
+2024-09-03 21:19:52,227 WARN exited: queue (exit status 1; not expected)
+2024-09-03 21:19:52,227 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:52,255 DEBG 'web' stdout output:
+
+   INFO  Server running….  
+
+
+
+2024-09-03 21:19:52,255 INFO gave up: queue entered FATAL state, too many start retries too quickly
+2024-09-03 21:19:52,255 DEBG 'web' stdout output:
+  Local: http://127.0.0.1:8000 
+
+  Press Ctrl+C to stop the server
+
+
+2024-09-03 21:19:52,266 DEBG 'web' stdout output:
+
+   ValueError 
+
+  First element must contain a non-empty program name
+
+2024-09-03 21:19:52,266 DEBG 'web' stdout output:
+
+  at vendor/symfony/process/Process.php:360
+
+2024-09-03 21:19:52,269 DEBG 'web' stdout output:
+    356▕             pcntl_sigprocmask(\SIG_BLOCK, $this->ignoredSignals, $oldMask);
+    357▕         }
+    358▕ 
+    359▕         try {
+  ➜ 360▕             $process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
+    361▕         } finally {
+    362▕             if ($this->ignoredSignals && \function_exists('pcntl_sigprocmask')) {
+    363▕                 // we restore the signal mask here to avoid any side effects
+    364▕                 pcntl_sigprocmask(\SIG_SETMASK, $oldMask);
+
+      [2m+18 vendor frames [22m
+
+  19  artisan:13
+
+2024-09-03 21:19:52,269 DEBG 'web' stdout output:
+      Illuminate\Foundation\Application::handleCommand(Object(Symfony\Component\Console\Input\ArgvInput))
+
+
+2024-09-03 21:19:52,273 DEBG fd 14 closed, stopped monitoring <POutputDispatcher at 140000053450832 for <Subprocess at 140000053404752 with name web in state STARTING> (stdout)>
+2024-09-03 21:19:52,274 DEBG fd 18 closed, stopped monitoring <POutputDispatcher at 140000053302416 for <Subprocess at 140000053404752 with name web in state STARTING> (stderr)>
+2024-09-03 21:19:52,274 WARN exited: web (exit status 1; not expected)
+2024-09-03 21:19:52,274 DEBG received SIGCHLD indicating a child quit
+2024-09-03 21:19:53,275 INFO gave up: web entered FATAL state, too many start retries too quickly
+2024-09-03 21:25:04,637 WARN received SIGTERM indicating exit request
