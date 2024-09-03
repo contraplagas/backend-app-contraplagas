@@ -34,6 +34,7 @@ class SendRemarketingMessagesJob implements ShouldQueue
     {
         foreach ($this->conversations as $conversation) {
             try {
+                dump($conversation);
                 if ($this->shouldSkipConversation($conversation)) {
                     Log::info("La conversación {$conversation['id']} se ha omitido.");
                     continue;
@@ -48,7 +49,9 @@ class SendRemarketingMessagesJob implements ShouldQueue
                 }
 
             } catch (Throwable $e) {
-                Log::error("Error al procesar la conversación {$conversation['id']}: {$e->getMessage()}");
+                if (isset($conversation['id'])) {
+                    Log::error("Error al procesar la conversación {$conversation['id']}: " . $e->getMessage());
+                }
             }
         }
     }
