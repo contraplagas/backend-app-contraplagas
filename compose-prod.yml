@@ -1,6 +1,10 @@
 volumes:
   db-data:
   phpmyadmin-data:
+
+networks:
+  app-contraplagas:
+    driver: bridge
 services:
   backend:
     build: .
@@ -16,6 +20,9 @@ services:
       options:
         max-size: "200k"
         max-file: "10"
+    networks:
+      - app-contraplagas
+
   mysql:
     image: mysql
     environment:
@@ -33,6 +40,8 @@ services:
       options:
         max-size: "200k"
         max-file: "10"
+    networks:
+      - app-contraplagas
 
   phpmyadmin:
     image: phpmyadmin
@@ -41,4 +50,9 @@ services:
       - ${FORWARD_PMA_PORT:-8080}:80
     environment:
       - PMA_ARBITRARY=1
+    volumes:
+      - phpmyadmin-data:/sessions
+    networks:
+      - app-contraplagas
+
 
