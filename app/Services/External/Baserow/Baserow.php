@@ -3,6 +3,7 @@
 namespace App\Services\External\Baserow;
 
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 
 class Baserow
@@ -11,7 +12,7 @@ class Baserow
     private string $attachments_url = 'https://baserow.contraplagasc.com/api/database/rows/table/1185/?user_field_names=true';
 
     public function __construct(
-        private string $api_key,
+        private readonly string $api_key,
     )
     {
     }
@@ -19,12 +20,14 @@ class Baserow
 
     /**
      * @throws ConnectionException
+     * @throws RequestException
      */
     public function RemarketingMessages(): array
     {
         return Http::withHeaders([
             'Authorization' => 'Token ' . $this->api_key,
         ])->get($this->remarketing_messages_url)
+            ->throw()
             ->collect('results')
             ->map(function ($message) {
                 return [

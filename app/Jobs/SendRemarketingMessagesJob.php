@@ -34,13 +34,13 @@ class SendRemarketingMessagesJob implements ShouldQueue
     {
         foreach ($this->conversations as $conversation) {
             try {
-                dump($conversation);
                 if ($this->shouldSkipConversation($conversation)) {
                     Log::info("La conversación {$conversation['id']} se ha omitido.");
                     continue;
                 }
 
                 $currentCycle = $this->getCurrentRemarketingCycle($conversation);
+
                 $messages = $this->buildMessage($conversation, $currentCycle);
 
                 if (!empty($messages)) {

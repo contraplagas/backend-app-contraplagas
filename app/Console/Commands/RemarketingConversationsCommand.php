@@ -23,7 +23,7 @@ class RemarketingConversationsCommand extends Command
     ];
 
     public const BASEROW_DAYS_MESSAGE_API = 'https://baserow.contraplagasc.com/api/database/1/rows/table/1';
-    public const BASEROW_API_ACCESS_TOKEN = "X2Lcv88vITDXOUInvOvG38clRUVBuWEk";
+    public const BASEROW_API_ACCESS_TOKEN = "bTbB0UM6prE1RsCT5dIgtzQv0LeHj1tU";
     public const CHATWOOT_API_ACCESS_TOKEN = "3ypbE6K6B4jbFQMJF2YETPHv";
 
     public const CONVERSATION_BATCH_SIZE = 5;
@@ -38,20 +38,21 @@ class RemarketingConversationsCommand extends Command
      */
     public function handle(): int
     {
-        $pages = $this->getConversationPages();
-        $conversations = [];
-//        for ($i = 1; $i <= $pages; $i++) {
-//            array_push($conversations, ...$this->filterConversationsByCriteria($i));
-//
-//            if ($i === 2) {
-//                break;
-//            }
-//        }
-
-        $conversations[] = $this->filterConversationsByCriteria(80);
-
         //Traer los mensajes de remarketing de Baserow
         $remarketing_messages = (new Baserow(self::BASEROW_API_ACCESS_TOKEN))->RemarketingMessages();
+
+        if (!$remarketing_messages) {
+            $this->output->error('No se pudieron obtener los mensajes de remarketing de Baserow');
+            return 1;
+        }
+
+        $pages = $this->getConversationPages();
+        $conversations = [];
+        for ($i = 1; $i <= $pages; $i++) {
+            array_push($conversations, ...$this->filterConversationsByCriteria($i));
+        }
+
+
         $conversationChunks = array_chunk($conversations, self::CONVERSATION_BATCH_SIZE);
         // Enviar cada lote con una espera de 5 minutos entre cada uno
         foreach ($conversationChunks as $index => $conversationChunk) {
