@@ -7,6 +7,7 @@ use App\Models\ConversationHistory;
 use App\Services\External\Baserow\Baserow;
 use Illuminate\Console\Command;
 use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 
@@ -35,6 +36,7 @@ class RemarketingConversationsCommand extends Command
 
     /**
      * @throws ConnectionException
+     * @throws RequestException
      */
     public function handle(): int
     {
