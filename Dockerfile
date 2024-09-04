@@ -1,7 +1,7 @@
 FROM dunglas/frankenphp:php8.3
 LABEL authors="YEIMAR LEMUS"
 
-ENV TZ=UTC
+ENV TZ=America/Bogota
 USER root
 
 # Instala Composer
